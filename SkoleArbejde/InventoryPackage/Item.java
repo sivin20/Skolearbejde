@@ -1,6 +1,6 @@
 package InventoryPackage;
 
-public class Item {
+public abstract class Item implements Expireable{
 
     private String name;
     private double price;
@@ -9,6 +9,11 @@ public class Item {
     Item(String name, Double price) {
         this.name = name;
         this.price = price;
+    }
+
+    @Override
+    public boolean isExpired() {
+        throw new UnsupportedOperationException("Item does not support this operation.");
     }
 
     @Override

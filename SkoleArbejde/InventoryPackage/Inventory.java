@@ -6,9 +6,10 @@ import java.util.Date;
     class Inventory {
     private ArrayList<Item> items;
 
-    Inventory (ArrayList<Item> items) {
+    Inventory(ArrayList<Item> items) {
         this.items = items;
     }
+
     Inventory() {
         this(new ArrayList<Item>());
     }
@@ -29,6 +30,28 @@ import java.util.Date;
         }
         return total;
     }
+
+    public void removeExpiresFoods() {
+        for(int i = 0; i < items.size(); i++)
+        {
+            Item item = items.get(i);
+            try
+            {
+                boolean isExpired = item.isExpired();
+                if(isExpired)
+                {
+                    items.remove(item);
+                    i--;
+                    // after item is removed, go back one index in ArrayList
+                }
+            }
+            catch (UnsupportedOperationException ex)
+            {
+                System.out.println("Item is a non food item");
+            }
+        }
+    }
+
     public void printInventory() {
         System.out.println("InventoryPackage.Inventory");
         for (Item item : items) {
@@ -41,21 +64,6 @@ import java.util.Date;
         System.out.println("");
         }
 
-    public static void main(String[] args) {
-        Inventory inventory = new Inventory();
-        Item i1 = new Item("Chocolate", 20d);
-        Item i2 = new FoodItem("Milk",9.95,new Date(12*1000*60*60*24));
-        Item i3 = new Item("Haribo",14.95);
-        Item i4 = new NonFoodItem("Charger",39.95, new String[]{"plastic","electricity", "software n' stuff"});
 
-        Item[] items = new Item[]{i1,i2,i3,i4};
-
-        for(Item item: items) {
-            inventory.addItem(item);
-        }
-
-        printStatus(inventory);
-
-    }
 }
 

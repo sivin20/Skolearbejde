@@ -28,18 +28,8 @@ public class NonFoodItem extends Item {
     }
 
     public static void main(String[] args) {
-        NonFoodItem[] items = new NonFoodItem[10];
 
-        for (int i = 0; i < items.length; i++) {
-            //mats sætter ting ind på pladserne i materials[]
-            String[] matsIphone = {"battery", "CPU", "Screen"};
-            String[] matsPC = {"CPU", "GPU","SSD","AMD Ryzen7", "AMD Radeon","battery"};
-            items[0] = new NonFoodItem("Iphone", 3500d,matsIphone);
-            items[i] = new NonFoodItem("Lenovo YOGA Slim 7", 8000d,matsPC);
 
-        }
-        for(NonFoodItem item: items) {
-            System.out.println(item.toString());
-        }
+
     }
 }
